@@ -7,3 +7,6 @@
 
 # .tfvars files
 *.tfvars
+
+#Directory Structure created by MAC
+.DS_Store
