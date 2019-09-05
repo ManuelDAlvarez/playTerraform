@@ -25,3 +25,8 @@ Infrastructure definition. In this case, it describes
 * a new Edge Hostname. If it is an existing one, you must provide the correct network (IPv4 or IPv6)
 * Two configurations. I took the rruleile format from the last lines of their respective rules.json file. 
 * One activation. Activations are handled as resources. Please note that deleting an activation will result in a deactivation. Use akamai_property_activation.activate=false instead.
+
+# Execute
+To effectively use the variables and activate a configuration, use soemthing like
+
+`$ terraform apply -var="akamnetwork=STAGING" -var="activatedirective=true"`
