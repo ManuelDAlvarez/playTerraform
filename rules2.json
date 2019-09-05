@@ -100,7 +100,7 @@
           "options" : {
             "behavior" : "MAX_AGE",
             "mustRevalidate" : false,
-            "ttl" : "7d"
+            "ttl" : "1d"
           }
         }, {
           "name" : "prefreshCache",
@@ -127,7 +127,7 @@
           "options" : {
             "behavior" : "MAX_AGE",
             "mustRevalidate" : false,
-            "ttl" : "7d"
+            "ttl" : "1d"
           }
         }, {
           "name" : "prefreshCache",

@@ -4,7 +4,6 @@
   "groupId" : "grp_63802",
   "propertyId" : "prp_329131",
   "propertyName" : "manuel.origin.md",
-  "propertyVersion" : 49,
   "etag" : "aae4459e96279a1a792a45d92b1e319b3c6a89de",
   "rules" : {
     "name" : "default",
@@ -41,7 +40,7 @@
         "name" : "caching",
         "options" : {
           "behavior" : "MAX_AGE",
-          "ttl" : "7d",
+          "ttl" : "9d",
           "mustRevalidate" : false
         }
       }, {
