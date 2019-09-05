@@ -2,7 +2,7 @@ resource "akamai_edge_hostname" "tf-demo" {
     product  = "prd_SPM"
     contract = "ctr_C-1ED34DY"
     group    = "grp_63802"
-    edge_hostname = "hmh-tf-v3.demo.edgesuite.net"
+    edge_hostname = "tf-v5.demo.edgesuite.net"
     ipv6 = true
 }
 
@@ -18,12 +18,12 @@ resource "akamai_property" "terraform-7" {
 
     rule_format = "v2017-06-19"
     rules       = "${data.local_file.rule-tree.content}"
-    hostnames = {"www.manuel.test" = "hmh-tf-v3.demo.edgesuite.net", "hmh-tf-v3.demo.edgesuite-staging.net" = "hmh-tf-v2.demo.edgesuite.net"}
+    hostnames = {"www.manuel.test" = "tf-v5.demo.edgesuite.net", "hmh-tf-v3.demo.edgesuite-staging.net" = "tf-v5.demo.edgesuite.net"}
 
 }
 
-resource "akamai_property" "manuelOrigin" {
-    name    = "manuel.origin.md"
+resource "akamai_property" "terraform-5" {
+    name    = "example.terraform-5.com"
     contact = ["maalvare@akamai.com"]
     product  = "prd_SPM"
     contract = "ctr_C-1ED34DY"
@@ -33,16 +33,24 @@ resource "akamai_property" "manuelOrigin" {
     rule_format = "v2019-07-25"
     rules       = "${data.local_file.origin-md.content}"
     hostnames = {
-        "manuel.origin.edgekey-staging.net" = "manuel.origin.edgekey.net", "manuel.origin.edgekey.net" = "manuel.origin.edgekey.net", "manuel.origin2.edgekey.net" = "manuel.origin2.edgekey.net", "manuel.origin2.edgekey-staging.net" = "manuel.origin2.edgekey.net"
+        "www.terraform-5.com" = "manuel.origin.edgekey.net", "dev.terraform-5.com" = "manuel.origin2.edgekey.net"
     }
 
 }
 
-resource "akamai_property_activation" "manuelOriginactivation" {
-    property = "${akamai_property.manuelOrigin.id}"
-    version  = "${akamai_property.manuelOrigin.version}"
+resource "akamai_property_activation" "terraform-5-activation" {
+    property = "${akamai_property.terraform-5.id}"
+    version  = "${akamai_property.terraform-5.version}"
     contact  = ["manuel@akamai.com"] 
     network  = "STAGING"
-    activate = true
+    activate = false
+}
+
+resource "akamai_property_activation" "terraform-7-activation" {
+    property = "${akamai_property.terraform-7.id}"
+    version  = "${akamai_property.terraform-7.version}"
+    contact  = ["manuel@akamai.com"] 
+    network  = "STAGING"
+    activate = false
 }
 
