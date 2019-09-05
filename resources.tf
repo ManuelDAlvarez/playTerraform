@@ -16,6 +16,7 @@ variable "activatedirective" {
 }
 
 #Resource definition Block
+
 #resource "akamai_edge_hostname" "tf-demo" {
 #    product  = "prd_SPM"
 #    contract = "ctr_C-1ED34DY"
