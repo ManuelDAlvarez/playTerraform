@@ -1,10 +1,28 @@
-resource "akamai_edge_hostname" "tf-demo" {
-    product  = "prd_SPM"
-    contract = "ctr_C-1ED34DY"
-    group    = "grp_63802"
-    edge_hostname = "tf-v5.demo.edgesuite.net"
-    ipv6 = true
+#Variable Block
+variable "origin" { 
+    default = "www.akamai.com"
 }
+
+variable "akamnetwork" { 
+    type        = string
+    description = "The Akamai network to activate the file"
+    default = "STAGING"
+}
+
+variable "activatedirective" { 
+    type        = bool
+    description = "Do you want to activate after the changes?"
+    default = false
+}
+
+#Resource definition Block
+#resource "akamai_edge_hostname" "tf-demo" {
+#    product  = "prd_SPM"
+#    contract = "ctr_C-1ED34DY"
+#    group    = "grp_63802"
+#    edge_hostname = "tf-v5.demo.edgesuite.net"
+#    #ipv6 = true
+#}
 
 
 resource "akamai_property" "terraform-7" {
@@ -42,15 +60,15 @@ resource "akamai_property_activation" "terraform-5-activation" {
     property = "${akamai_property.terraform-5.id}"
     version  = "${akamai_property.terraform-5.version}"
     contact  = ["manuel@akamai.com"] 
-    network  = "STAGING"
-    activate = false
+    network  = var.akamnetwork
+    activate = var.activatedirective
 }
 
 resource "akamai_property_activation" "terraform-7-activation" {
     property = "${akamai_property.terraform-7.id}"
     version  = "${akamai_property.terraform-7.version}"
     contact  = ["manuel@akamai.com"] 
-    network  = "STAGING"
-    activate = false
+    network  = var.akamnetwork
+    activate = var.activatedirective
 }
 
