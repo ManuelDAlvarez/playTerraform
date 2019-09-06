@@ -2,9 +2,10 @@
   "accountId" : "act_B-C-1ED34DK",
   "contractId" : "ctr_C-1ED34DY",
   "groupId" : "grp_63802",
-  "propertyId" : "prp_329131",
-  "propertyName" : "manuel.origin.md",
-  "etag" : "aae4459e96279a1a792a45d92b1e319b3c6a89de",
+  "propertyId" : "prp_568121",
+  "propertyName" : "example.terraform-5.com",
+  "propertyVersion" : 2,
+  "etag" : "f7b151556ac46ae17a7c0511586d9fbf7f8c3f66",
   "rules" : {
     "name" : "default",
     "children" : [ {
@@ -19,17 +20,17 @@
       "criteria" : [ {
         "name" : "contentType",
         "options" : {
+          "matchCaseSensitive" : false,
           "matchOperator" : "IS_ONE_OF",
-          "values" : [ "text/*", "application/javascript", "application/x-javascript", "application/x-javascript*", "application/json", "application/x-json", "application/*+json", "application/*+xml", "application/text", "application/vnd.microsoft.icon", "application/vnd-ms-fontobject", "application/x-font-ttf", "application/x-font-opentype", "application/x-font-truetype", "application/xmlfont/eot", "application/xml", "font/opentype", "font/otf", "font/eot", "image/svg+xml", "image/vnd.microsoft.icon" ],
           "matchWildcard" : true,
-          "matchCaseSensitive" : false
+          "values" : [ "text/*", "application/javascript", "application/x-javascript", "application/x-javascript*", "application/json", "application/x-json", "application/*+json", "application/*+xml", "application/text", "application/vnd.microsoft.icon", "application/vnd-ms-fontobject", "application/x-font-ttf", "application/x-font-opentype", "application/x-font-truetype", "application/xmlfont/eot", "application/xml", "font/opentype", "font/otf", "font/eot", "image/svg+xml", "image/vnd.microsoft.icon" ]
         }
       }, {
         "name" : "fileExtension",
         "options" : {
+          "matchCaseSensitive" : false,
           "matchOperator" : "IS_ONE_OF",
-          "values" : [ "html", "js", "json", "css" ],
-          "matchCaseSensitive" : false
+          "values" : [ "html", "js", "json", "css" ]
         }
       } ],
       "criteriaMustSatisfy" : "all"
@@ -40,8 +41,8 @@
         "name" : "caching",
         "options" : {
           "behavior" : "MAX_AGE",
-          "ttl" : "9d",
-          "mustRevalidate" : false
+          "mustRevalidate" : false,
+          "ttl" : "9d"
         }
       }, {
         "name" : "prefetchable",
@@ -57,31 +58,6 @@
           "values" : [ "css", "gif", "jpg", "js", "png", "pict", "tif", "tiff", "mid", "midi", "ttf", "eot", "woff", "woff2", "otf", "svg", "svgz", "webp", "jxr", "class", "jar", "jp2" ]
         }
       } ],
-      "criteriaMustSatisfy" : "any"
-    }, {
-      "name" : "RUM",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "realUserMonitoring",
-        "options" : {
-          "enabled" : true
-        }
-      }, {
-        "name" : "rumCustom",
-        "options" : {
-          "rumSampleRate" : 100,
-          "rumGroupName" : ""
-        },
-        "uuid" : "96bf3e7d-0e7b-484f-bc48-0d8e67f7d0e8"
-      } ],
-      "uuid" : "aa2d3c08-3038-4160-947e-1fe76b10daee",
-      "criteria" : [ {
-        "name" : "hostname",
-        "options" : {
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "*" ]
-        }
-      } ],
       "criteriaMustSatisfy" : "all"
     }, {
       "name" : "redirect",
@@ -89,10 +65,10 @@
       "behaviors" : [ {
         "name" : "redirect",
         "options" : {
-          "mobileDefaultChoice" : "DEFAULT",
-          "destinationProtocol" : "HTTPS",
           "destinationHostname" : "SAME_AS_REQUEST",
           "destinationPath" : "SAME_AS_REQUEST",
+          "destinationProtocol" : "HTTPS",
+          "mobileDefaultChoice" : "DEFAULT",
           "queryString" : "APPEND",
           "responseCode" : 302
         }
@@ -104,159 +80,40 @@
         }
       } ],
       "criteriaMustSatisfy" : "all"
-    }, {
-      "name" : "Image Manager 1",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "caching",
-        "options" : {
-          "behavior" : "MAX_AGE",
-          "mustRevalidate" : false,
-          "ttl" : "30d"
-        }
-      }, {
-        "name" : "imageManager",
-        "options" : {
-          "advanced" : true,
-          "apiReferenceTitle" : "",
-          "applyBestFileType" : true,
-          "enabled" : true,
-          "resize" : false,
-          "settingsTitle" : "",
-          "superCacheRegion" : "US",
-          "trafficTitle" : "",
-          "cpCodeOriginal" : {
-            "id" : 371349,
-            "description" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ],
-            "createdDate" : 1.431447272E12,
-            "name" : "A2S fURL"
-          },
-          "cpCodeTransformed" : {
-            "id" : 371349,
-            "description" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ],
-            "createdDate" : 1.431447272E12,
-            "name" : "A2S fURL"
-          },
-          "policyToken" : "manuel_origin_md1"
-        }
-      } ],
-      "criteria" : [ {
-        "name" : "fileExtension",
-        "options" : {
-          "matchCaseSensitive" : false,
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "jpg", "gif", "jpeg", "png", "imviewer" ]
-        }
-      }, {
-        "name" : "queryStringParameter",
-        "options" : {
-          "parameterName" : "test",
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "1" ],
-          "matchWildcardName" : false,
-          "matchCaseSensitiveName" : true,
-          "matchWildcardValue" : false,
-          "matchCaseSensitiveValue" : true,
-          "escapeValue" : false
-        }
-      } ],
-      "criteriaMustSatisfy" : "all",
-      "comments" : "Enable Scale for Mobile to serve the best available size for the requesting device. (Careful testing is highly recommended.) Enable Use Best File Type to serve the image format that works best for the requesting client. To configure breakpoint widths, derivative image quality, and artistic transformations, save and activate this configuration; then, create policies for this policy set via either Image Manager Policy Manager or the OPEN Image Manager API."
-    }, {
-      "name" : "Image Manager 2",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "caching",
-        "options" : {
-          "behavior" : "MAX_AGE",
-          "mustRevalidate" : false,
-          "ttl" : "30d"
-        }
-      }, {
-        "name" : "imageManager",
-        "options" : {
-          "settingsTitle" : "",
-          "enabled" : true,
-          "superCacheRegion" : "US",
-          "trafficTitle" : "",
-          "cpCodeOriginal" : {
-            "id" : 371349,
-            "description" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ],
-            "createdDate" : 1.431447272E12,
-            "name" : "A2S fURL"
-          },
-          "cpCodeTransformed" : {
-            "id" : 371349,
-            "description" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ],
-            "createdDate" : 1.431447272E12,
-            "name" : "A2S fURL"
-          },
-          "apiReferenceTitle" : "",
-          "advanced" : true,
-          "resize" : false,
-          "applyBestFileType" : true,
-          "policyToken" : "manuel_origin_md2"
-        }
-      } ],
-      "criteria" : [ {
-        "name" : "fileExtension",
-        "options" : {
-          "matchCaseSensitive" : false,
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "jpg", "gif", "jpeg", "png", "imviewer" ]
-        }
-      }, {
-        "name" : "queryStringParameter",
-        "options" : {
-          "parameterName" : "test",
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "2" ],
-          "matchWildcardName" : false,
-          "matchCaseSensitiveName" : true,
-          "matchWildcardValue" : false,
-          "matchCaseSensitiveValue" : true,
-          "escapeValue" : false
-        }
-      } ],
-      "criteriaMustSatisfy" : "all",
-      "comments" : "Enable Scale for Mobile to serve the best available size for the requesting device. (Careful testing is highly recommended.) Enable Use Best File Type to serve the image format that works best for the requesting client. To configure breakpoint widths, derivative image quality, and artistic transformations, save and activate this configuration; then, create policies for this policy set via either Image Manager Policy Manager or the OPEN Image Manager API."
     } ],
     "behaviors" : [ {
-      "name" : "origin",
-      "options" : {
-        "originType" : "NET_STORAGE",
-        "netStorage" : {
-          "downloadDomainName" : "ezacs.download.akamai.com",
-          "cpCode" : 371351,
-          "g2oToken" : null
-        },
-        "useUniqueCacheKey" : false
-      }
-    }, {
-      "name" : "advanced",
-      "options" : {
-        "description" : "",
-        "xml" : "<forward:origin-server.host>staplesimage.download.akamai.com</forward:origin-server.host>\n                    <assign:variable>\n                        <name>AKA_PM_NETSTORAGE_ROOT</name>\n                        <value>/626980</value>\n                        <max-length>4796</max-length>\n                    </assign:variable>"
-      },
-      "uuid" : "db5fcda8-cdb3-4318-a60c-bf10dbc2a34d"
-    }, {
-      "name" : "cacheKeyQueryParams",
-      "options" : {
-        "behavior" : "IGNORE_ALL"
-      }
-    }, {
       "name" : "cpCode",
       "options" : {
         "value" : {
-          "id" : 498884,
-          "products" : [ "SPM" ],
           "createdDate" : 1.473183278E12,
-          "name" : "feolab"
+          "id" : 498884,
+          "name" : "feolab",
+          "products" : [ "SPM" ]
         }
+      }
+    }, {
+      "name" : "origin",
+      "options" : {
+        "originType" : "CUSTOMER",
+        "hostname" : "developer.akamai.com",
+        "forwardHostHeader" : "ORIGIN_HOSTNAME",
+        "cacheKeyHostname" : "REQUEST_HOST_HEADER",
+        "compress" : true,
+        "enableTrueClientIp" : false,
+        "originCertificate" : "",
+        "verificationMode" : "CUSTOM",
+        "ports" : "",
+        "httpPort" : 80,
+        "httpsPort" : 443,
+        "originSni" : true,
+        "customValidCnValues" : [ "{{Origin Hostname}}", "{{Forward Host Header}}", "akamai.com" ],
+        "originCertsToHonor" : "STANDARD_CERTIFICATE_AUTHORITIES",
+        "standardCertificateAuthorities" : [ "akamai-permissive" ]
+      }
+    }, {
+      "name" : "cacheKeyQueryParams",
+      "options" : {
+        "behavior" : "INCLUDE_ALL_ALPHABETIZE_ORDER"
       }
     }, {
       "name" : "allowPost",
@@ -267,8 +124,8 @@
       "name" : "cacheError",
       "options" : {
         "enabled" : true,
-        "ttl" : "30s",
-        "preserveStale" : true
+        "preserveStale" : true,
+        "ttl" : "30s"
       }
     }, {
       "name" : "prefetch",
@@ -276,36 +133,16 @@
         "enabled" : true
       }
     } ],
-    "uuid" : "default",
     "options" : {
       "is_secure" : true
     },
-    "variables" : [ ],
-    "comments" : "The behaviors in the Default Rule apply to all requests for the property hostname(s) unless another rule overrides the Default Rule settings."
+    "variables" : [ ]
   },
   "warnings" : [ {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/generic_behavior_issue.rum_eol",
-    "errorLocation" : "#/rules/children/2/behaviors/0",
-    "detail" : "<strong> Important </strong>: We recommend using an mPulse behavior instead on this property. mPulse is Akamai's recommended source of RUM data going forward"
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/incompatible_features",
-    "errorLocation" : "#/rules/children/4/behaviors/1",
-    "detail" : "You have chosen to override the default `Image Manager` policy. If no policy with the registered API key is found, `Image Manager` will apply the default policy. Note that the label you entered will not persist through a save if the override is turned off."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/incompatible_features",
-    "errorLocation" : "#/rules/children/5/behaviors/1",
-    "detail" : "You have chosen to override the default `Image Manager` policy. If no policy with the registered API key is found, `Image Manager` will apply the default policy. Note that the label you entered will not persist through a save if the override is turned off."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/conflicting_xml",
-    "errorLocation" : "#/rules",
-    "detail" : "One or more Origin Server behaviors may not work as expected due to Advanced behaviors or Advanced Override matching expression //assign:variable/name[text()='AKA_PM_NETSTORAGE_ROOT']. Consult your account representative or see <a href=\"/dl/property-manager/property-manager-help/csh_lookup.html?id=PM_0119\" target=\"_blank\">Advanced</a> for more information."
-  }, {
-    "title" : "Unstable rule format",
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/unstable_rule_format",
-    "detail" : "This property is using `latest` rule format, which is designed to reflect interface changes immediately. We suggest converting the property to a stable rule format such as `v2019-07-25` to minimize the risk of interface changes breaking your API client program.",
-    "currentRuleFormat" : "latest",
-    "suggestedRuleFormat" : "v2019-07-25"
+    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/validation_message.ssl_custom_warning_test_staging",
+    "errorLocation" : "#/rules/behaviors/1",
+    "detail" : "If you are changing your `Origin Server` SSL Certificate Verification settings it is strongly recommended that you test on Staging before activating on Production. Failure to test on Staging may result in a service outage."
   } ],
-  "ruleFormat" : "latest",
-  "comments" : "Image Manager test for www.staples-3p.com"
+  "ruleFormat" : "v2019-07-25",
+  "comments" : "It is secure now"
 }

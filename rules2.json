@@ -2,7 +2,10 @@
   "accountId" : "act_B-C-1ED34DK",
   "contractId" : "ctr_C-1ED34DY",
   "groupId" : "grp_63802",
-  "propertyId" : "prp_558441",
+  "propertyId" : "prp_562023",
+  "propertyName" : "terraform-7",
+  "propertyVersion" : 8,
+  "etag" : "8e5512ff31c2fca8b44202ed8460c42d0f3e05d3",
   "rules" : {
     "name" : "default",
     "children" : [ {
@@ -60,6 +63,11 @@
         "comments" : "Compresses content to improve performance of clients with slow connections. Applies Last Mile Acceleration to requests when the returned object supports gzip compression."
       } ],
       "behaviors" : [ {
+        "name" : "caching",
+        "options" : {
+          "behavior" : "NO_STORE"
+        }
+      }, {
         "name" : "enhancedAkamaiProtocol",
         "options" : {
           "display" : ""
@@ -82,7 +90,7 @@
           "forceSslForward" : true,
           "raceStatTtl" : "1h",
           "srDownloadLinkTitle" : "",
-          "testObjectUrl" : "/styles/screen.1551981229.css",
+          "testObjectUrl" : "/style1.css",
           "toHostStatus" : "INCOMING_HH",
           "type" : "PERFORMANCE"
         }
@@ -127,7 +135,7 @@
           "options" : {
             "behavior" : "MAX_AGE",
             "mustRevalidate" : false,
-            "ttl" : "1d"
+            "ttl" : "7d"
           }
         }, {
           "name" : "prefreshCache",
@@ -166,13 +174,6 @@
         "comments" : "Overrides the default downstream caching behavior for uncacheable object types. Instructs the edge server to pass Cache-Control and/or Expire headers from the origin to the client."
       } ],
       "behaviors" : [ {
-        "name" : "caching",
-        "options" : {
-          "behavior" : "MAX_AGE",
-          "mustRevalidate" : false,
-          "ttl" : "30m"
-        }
-      }, {
         "name" : "cacheError",
         "options" : {
           "enabled" : true,
@@ -192,15 +193,6 @@
         "options" : {
           "enabled" : true,
           "tieredDistributionMap" : "CH2"
-        }
-      }, {
-        "name" : "largeFileOptimization",
-        "options" : {
-          "enablePartialObjectCaching" : "PARTIAL_OBJECT_CACHING",
-          "enabled" : true,
-          "maximumSize" : "16GB",
-          "minimumSize" : "100MB",
-          "useVersioning" : true
         }
       } ],
       "criteria" : [ ],
@@ -240,7 +232,7 @@
         "options" : {
           "behavior" : "MAX_AGE",
           "mustRevalidate" : false,
-          "ttl" : "7d"
+          "ttl" : "9d"
         }
       }, {
         "name" : "prefetchable",
@@ -257,174 +249,19 @@
         }
       } ],
       "criteriaMustSatisfy" : "all"
-    }, {
-      "name" : "RUM",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "realUserMonitoring",
-        "options" : {
-          "enabled" : true
-        }
-      }, {
-        "name" : "rumCustom",
-        "options" : {
-          "rumGroupName" : "",
-          "rumSampleRate" : 100
-        },
-        "uuid" : "0b76fe8e-300c-46be-b4dd-fb4f5a9fa403"
-      } ],
-      "uuid" : "2c5c8833-4d84-4dde-bfa2-7e20eb4dea31",
-      "criteria" : [ {
-        "name" : "hostname",
-        "options" : {
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "*" ]
-        }
-      } ],
-      "criteriaMustSatisfy" : "all"
-    }, {
-      "name" : "redirect",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "redirect",
-        "options" : {
-          "destinationHostname" : "SAME_AS_REQUEST",
-          "destinationPath" : "SAME_AS_REQUEST",
-          "destinationProtocol" : "HTTPS",
-          "mobileDefaultChoice" : "DEFAULT",
-          "queryString" : "APPEND",
-          "responseCode" : 302
-        }
-      } ],
-      "criteria" : [ {
-        "name" : "requestProtocol",
-        "options" : {
-          "value" : "HTTP"
-        }
-      } ],
-      "criteriaMustSatisfy" : "all"
-    }, {
-      "name" : "Image Manager 1",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "caching",
-        "options" : {
-          "behavior" : "MAX_AGE",
-          "mustRevalidate" : false,
-          "ttl" : "30d"
-        }
-      }, {
-        "name" : "imageManager",
-        "options" : {
-          "advanced" : true,
-          "apiReferenceTitle" : "",
-          "applyBestFileType" : true,
-          "cpCodeOriginal" : {
-            "createdDate" : 1.431447272E12,
-            "description" : "A2S fURL",
-            "id" : 378312,
-            "name" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ]
-          },
-          "cpCodeTransformed" : {
-            "createdDate" : 1.431447272E12,
-            "description" : "A2S fURL",
-            "id" : 378312,
-            "name" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ]
-          },
-          "enabled" : true,
-          "policyToken" : "manuel_origin_md1",
-          "resize" : false,
-          "settingsTitle" : "",
-          "superCacheRegion" : "US",
-          "trafficTitle" : ""
-        }
-      } ],
-      "criteria" : [ {
-        "name" : "fileExtension",
-        "options" : {
-          "matchCaseSensitive" : false,
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "jpg", "gif", "jpeg", "png", "imviewer" ]
-        }
-      }, {
-        "name" : "queryStringParameter",
-        "options" : {
-          "escapeValue" : false,
-          "matchCaseSensitiveName" : true,
-          "matchCaseSensitiveValue" : true,
-          "matchOperator" : "IS_ONE_OF",
-          "matchWildcardName" : false,
-          "matchWildcardValue" : false,
-          "parameterName" : "test",
-          "values" : [ "1" ]
-        }
-      } ],
-      "criteriaMustSatisfy" : "all",
-      "comments" : "Enable Scale for Mobile to serve the best available size for the requesting device. (Careful testing is highly recommended.) Enable Use Best File Type to serve the image format that works best for the requesting client. To configure breakpoint widths, derivative image quality, and artistic transformations, save and activate this configuration; then, create policies for this policy set via either Image Manager Policy Manager or the OPEN Image Manager API."
-    }, {
-      "name" : "Image Manager 2",
-      "children" : [ ],
-      "behaviors" : [ {
-        "name" : "caching",
-        "options" : {
-          "behavior" : "MAX_AGE",
-          "mustRevalidate" : false,
-          "ttl" : "30d"
-        }
-      }, {
-        "name" : "imageManager",
-        "options" : {
-          "advanced" : true,
-          "apiReferenceTitle" : "",
-          "applyBestFileType" : true,
-          "cpCodeOriginal" : {
-            "createdDate" : 1.431447272E12,
-            "description" : "A2S fURL",
-            "id" : 378312,
-            "name" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ]
-          },
-          "cpCodeTransformed" : {
-            "createdDate" : 1.431447272E12,
-            "description" : "A2S fURL",
-            "id" : 378312,
-            "name" : "A2S fURL",
-            "products" : [ "SPM", "Site_Accel" ]
-          },
-          "enabled" : true,
-          "policyToken" : "manuel_origin_md2",
-          "resize" : false,
-          "settingsTitle" : "",
-          "superCacheRegion" : "US",
-          "trafficTitle" : ""
-        }
-      } ],
-      "criteria" : [ {
-        "name" : "fileExtension",
-        "options" : {
-          "matchCaseSensitive" : false,
-          "matchOperator" : "IS_ONE_OF",
-          "values" : [ "jpg", "gif", "jpeg", "png", "imviewer" ]
-        }
-      }, {
-        "name" : "queryStringParameter",
-        "options" : {
-          "escapeValue" : false,
-          "matchCaseSensitiveName" : true,
-          "matchCaseSensitiveValue" : true,
-          "matchOperator" : "IS_ONE_OF",
-          "matchWildcardName" : false,
-          "matchWildcardValue" : false,
-          "parameterName" : "test",
-          "values" : [ "2" ]
-        }
-      } ],
-      "criteriaMustSatisfy" : "all",
-      "comments" : "Enable Scale for Mobile to serve the best available size for the requesting device. (Careful testing is highly recommended.) Enable Use Best File Type to serve the image format that works best for the requesting client. To configure breakpoint widths, derivative image quality, and artistic transformations, save and activate this configuration; then, create policies for this policy set via either Image Manager Policy Manager or the OPEN Image Manager API."
     } ],
     "behaviors" : [ {
+      "name" : "origin",
+      "options" : {
+        "originType" : "CUSTOMER",
+        "hostname" : "www.kloth.net",
+        "forwardHostHeader" : "ORIGIN_HOSTNAME",
+        "cacheKeyHostname" : "REQUEST_HOST_HEADER",
+        "compress" : true,
+        "enableTrueClientIp" : false,
+        "httpPort" : 80
+      }
+    }, {
       "name" : "cpCode",
       "options" : {
         "value" : {
@@ -435,27 +272,11 @@
         }
       }
     }, {
-      "name" : "origin",
-      "options" : {
-        "netStorage" : {
-          "cpCode" : 375994,
-          "downloadDomainName" : "cst.download.akamai.com",
-          "g2oToken" : null
-        },
-        "originType" : "NET_STORAGE"
-      }
-    }, {
       "name" : "allowPost",
       "options" : {
-        "enabled" : false
+        "enabled" : true,
+        "allowWithoutContentLength" : false
       }
-    }, {
-      "name" : "advanced",
-      "options" : {
-        "description" : "",
-        "xml" : "<forward:origin-server.host>staplesimage.download.akamai.com</forward:origin-server.host>\n                    <assign:variable>\n                        <name>AKA_PM_NETSTORAGE_ROOT</name>\n                        <value>/626980</value>\n                        <max-length>4796</max-length>\n                    </assign:variable>"
-      },
-      "uuid" : "5c2fccaf-1392-4a7e-938e-cdc0a15bf6a3"
     }, {
       "name" : "cacheKeyQueryParams",
       "options" : {
@@ -474,30 +295,11 @@
         "enabled" : true
       }
     } ],
-    "uuid" : "default",
-    "options" : { }
+    "options" : {
+      "is_secure" : false
+    },
+    "variables" : [ ]
   },
-  "warnings" : [ {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/need_feature",
-    "errorLocation" : "#/rules/children/0/behaviors/3",
-    "detail" : "`SureRoute` only applies to no-store content, but no-store is not set in a caching behavior. If you add no-store caching behaviors, SureRoute will apply."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/need_condition",
-    "errorLocation" : "#/rules/children/1/behaviors/4",
-    "detail" : "It is recommended to only apply `Large File Optimization` under an extension matching the large object file types.  LFO adds some time overhead to serving small files."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/incompatible_features",
-    "errorLocation" : "#/rules/children/6/behaviors/1",
-    "detail" : "You have chosen to override the default `Image Manager` policy. If no policy with the registered API key is found, `Image Manager` will apply the default policy. Note that the label you entered will not persist through a save if the override is turned off."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/incompatible_features",
-    "errorLocation" : "#/rules/children/7/behaviors/1",
-    "detail" : "You have chosen to override the default `Image Manager` policy. If no policy with the registered API key is found, `Image Manager` will apply the default policy. Note that the label you entered will not persist through a save if the override is turned off."
-  }, {
-    "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/conflicting_xml",
-    "errorLocation" : "#/rules",
-    "detail" : "One or more Origin Server behaviors may not work as expected due to Advanced behaviors or Advanced Override matching expression //assign:variable/name[text()='AKA_PM_NETSTORAGE_ROOT']. Consult your account representative or see <a href=\"/dl/property-manager/property-manager-help/csh_lookup.html?id=PM_0119\" target=\"_blank\">Advanced</a> for more information."
-  } ],
   "ruleFormat" : "v2017-06-19",
-  "comments" : "breaking things up"
+  "comments" : "Updating it"
 }
