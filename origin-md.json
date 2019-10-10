@@ -4,8 +4,8 @@
   "groupId" : "grp_63802",
   "propertyId" : "prp_568121",
   "propertyName" : "example.terraform-5.com",
-  "propertyVersion" : 2,
-  "etag" : "f7b151556ac46ae17a7c0511586d9fbf7f8c3f66",
+  "propertyVersion" : 3,
+  "etag" : "3feda74f77961a3b1ed2e316fd1fc244d313e20d",
   "rules" : {
     "name" : "default",
     "children" : [ {
@@ -42,7 +42,7 @@
         "options" : {
           "behavior" : "MAX_AGE",
           "mustRevalidate" : false,
-          "ttl" : "9d"
+          "ttl" : "7d"
         }
       }, {
         "name" : "prefetchable",
@@ -94,21 +94,21 @@
     }, {
       "name" : "origin",
       "options" : {
-        "originType" : "CUSTOMER",
-        "hostname" : "developer.akamai.com",
-        "forwardHostHeader" : "ORIGIN_HOSTNAME",
         "cacheKeyHostname" : "REQUEST_HOST_HEADER",
         "compress" : true,
+        "customValidCnValues" : [ "{{Origin Hostname}}", "{{Forward Host Header}}", "akamai.com" ],
         "enableTrueClientIp" : false,
-        "originCertificate" : "",
-        "verificationMode" : "CUSTOM",
-        "ports" : "",
+        "forwardHostHeader" : "ORIGIN_HOSTNAME",
+        "hostname" : "developer.akamai.com",
         "httpPort" : 80,
         "httpsPort" : 443,
-        "originSni" : true,
-        "customValidCnValues" : [ "{{Origin Hostname}}", "{{Forward Host Header}}", "akamai.com" ],
+        "originCertificate" : "",
         "originCertsToHonor" : "STANDARD_CERTIFICATE_AUTHORITIES",
-        "standardCertificateAuthorities" : [ "akamai-permissive" ]
+        "originSni" : true,
+        "originType" : "CUSTOMER",
+        "ports" : "",
+        "standardCertificateAuthorities" : [ "akamai-permissive" ],
+        "verificationMode" : "CUSTOM"
       }
     }, {
       "name" : "cacheKeyQueryParams",
@@ -135,14 +135,12 @@
     } ],
     "options" : {
       "is_secure" : true
-    },
-    "variables" : [ ]
+    }
   },
   "warnings" : [ {
     "type" : "https://problems.luna.akamaiapis.net/papi/v0/validation/validation_message.ssl_custom_warning_test_staging",
     "errorLocation" : "#/rules/behaviors/1",
     "detail" : "If you are changing your `Origin Server` SSL Certificate Verification settings it is strongly recommended that you test on Staging before activating on Production. Failure to test on Staging may result in a service outage."
   } ],
-  "ruleFormat" : "v2019-07-25",
-  "comments" : "It is secure now"
+  "ruleFormat" : "v2019-07-25"
 }
